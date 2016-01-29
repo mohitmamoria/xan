@@ -5,14 +5,12 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Nticaric\Twitter\TwitterStream;
 use TwitterAPIExchange;
+use App\Xan\TrackXanRocks;
+use App\Xan\Trackable;
+use Phirehose;
 
 class XanRocks extends Command
 {
-    public static $CONSUMER_KEY = 'mVKYY3mzBrrJSKuCNKx0vkFoC';
-    public static $CONSUMER_SECRET = 's37MuYXl5U46kBOG9gXBfvUuTBmIwFZCD4cyPJX0bQtomIt3Gi';
-    public static $ACCESS_TOKEN = '4824294895-r6psnfcVAxpJ8YFTaRwctcnfJv5CRBEWGwjeu9I';
-    public static $ACCESS_TOKEN_SECRET = 'tvpSMsu3ebnCf1gy9HsCH1Lyx37XBop5DnQ9SrIOCRBec';
-
     /**
      * The name and signature of the console command.
      *
@@ -44,25 +42,21 @@ class XanRocks extends Command
      */
     public function handle()
     {
-        $stream = new TwitterStream(array(
-            'consumer_key'    => static::$CONSUMER_KEY,
-            'consumer_secret' => static::$CONSUMER_SECRET,
-            'token'           => static::$ACCESS_TOKEN,
-            'token_secret'    => static::$ACCESS_TOKEN_SECRET
-        ));
+        $stream = new TrackXanRocks(
+            config('xan.twitter.access_token'),
+            config('xan.twitter.access_token_secret'),
+            Phirehose::METHOD_FILTER
+        );
 
-        try {
-            $stream->getStatuses(['track' => '#XanRocks'], function($tweet) {
-                // prints to the screen statuses as they come along
-                print_r($tweet);
+        $stream->consumerKey = config('xan.twitter.consumer_key');
+        $stream->consumerSecret = config('xan.twitter.consumer_secret');
 
-                // respond to the tweet
-                // $this->respondToTweet($tweet);
-            });
-        } catch(\GuzzleHttp\Exception\ClientException $e) {
-            dd($e->getResponse()->getBody());
+        if($stream instanceof Trackable)
+        {
+            $stream->setTrack($stream->getTrack());
         }
 
+        $stream->consume();
     }
 
     protected function respondToTweet($tweet)

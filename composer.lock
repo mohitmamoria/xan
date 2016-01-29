@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f25d3b91cc19c517169ab8a13fdbb53c",
-    "content-hash": "f72b912d186dcb1c6fcb2f16218af9d9",
+    "hash": "bcb514e1146fcc1824f0e52d34e3a0ff",
+    "content-hash": "8b0bf50cbcd0e28462214699df9abab7",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -160,6 +160,50 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "fennb/phirehose",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fennb/phirehose.git",
+                "reference": "09085805b4025488f1ad2d93171c67c28408609e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fennb/phirehose/zipball/09085805b4025488f1ad2d93171c67c28408609e",
+                "reference": "09085805b4025488f1ad2d93171c67c28408609e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Fenn Bailey",
+                    "homepage": "http://fennb.com/"
+                }
+            ],
+            "description": "A PHP interface to the Twitter Streaming API.",
+            "homepage": "https://github.com/fennb/phirehose",
+            "keywords": [
+                "api",
+                "phirehose",
+                "php",
+                "streaming",
+                "twitter"
+            ],
+            "time": "2015-11-24 22:42:24"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -3366,7 +3410,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "nticaric/twitter-streaming-api": 20,
-        "j7mbo/twitter-api-php": 20
+        "j7mbo/twitter-api-php": 20,
+        "fennb/phirehose": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
