@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bcb514e1146fcc1824f0e52d34e3a0ff",
-    "content-hash": "8b0bf50cbcd0e28462214699df9abab7",
+    "hash": "b20232eee6d2d0ef89d68288aa01db13",
+    "content-hash": "a1b32a0a3fb098a55492175e8f54445d",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -204,271 +204,6 @@
                 "twitter"
             ],
             "time": "2015-11-24 22:42:24"
-        },
-        {
-            "name": "guzzlehttp/guzzle",
-            "version": "4.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/66fd916e9f9130bc22c51450476823391cb2f67c",
-                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "guzzlehttp/streams": "~2.1",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "ext-curl": "*",
-                "phpunit/phpunit": "~4.0",
-                "psr/log": "~1.0"
-            },
-            "suggest": {
-                "ext-curl": "Guzzle will use specific adapters if cURL is present"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "client",
-                "curl",
-                "framework",
-                "http",
-                "http client",
-                "rest",
-                "web service"
-            ],
-            "time": "2014-10-05 19:29:14"
-        },
-        {
-            "name": "guzzlehttp/log-subscriber",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/log-subscriber.git",
-                "reference": "99c3c0004165db721d8ef7bbef60c996210e538a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/log-subscriber/zipball/99c3c0004165db721d8ef7bbef60c996210e538a",
-                "reference": "99c3c0004165db721d8ef7bbef60c996210e538a",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~4.0 | ~5.0",
-                "php": ">=5.4.0",
-                "psr/log": "~1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Subscriber\\Log\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Logs HTTP requests and responses as they are sent over the wire (Guzzle 4+)",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "Guzzle",
-                "log",
-                "plugin"
-            ],
-            "time": "2014-10-13 03:31:43"
-        },
-        {
-            "name": "guzzlehttp/oauth-subscriber",
-            "version": "0.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/oauth-subscriber.git",
-                "reference": "f5e857b5ab34279611c171111c40000435299698"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/oauth-subscriber/zipball/f5e857b5ab34279611c171111c40000435299698",
-                "reference": "f5e857b5ab34279611c171111c40000435299698",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~4.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Subscriber\\Oauth\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Guzzle OAuth 1.0 subscriber",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "Guzzle",
-                "oauth"
-            ],
-            "time": "2014-05-20 00:04:02"
-        },
-        {
-            "name": "guzzlehttp/retry-subscriber",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/retry-subscriber.git",
-                "reference": "fdee39aa27a462da184312aaafda35d5b191691d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/retry-subscriber/zipball/fdee39aa27a462da184312aaafda35d5b191691d",
-                "reference": "fdee39aa27a462da184312aaafda35d5b191691d",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "~4.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "guzzlehttp/log-subscriber": "~1.0",
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Subscriber\\Retry\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Retries failed HTTP requests using customizable retry strategies (Guzzle 4+)",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "Guzzle",
-                "http",
-                "retry"
-            ],
-            "time": "2014-08-04 17:45:25"
-        },
-        {
-            "name": "guzzlehttp/streams",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/guzzle/streams.git",
-                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/streams/zipball/f91b721d73f0e561410903b3b3c90a5d0e40b534",
-                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Stream\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
-                }
-            ],
-            "description": "Provides a simple abstraction over streams of data (Guzzle 4+)",
-            "homepage": "http://guzzlephp.org/",
-            "keywords": [
-                "Guzzle",
-                "stream"
-            ],
-            "time": "2014-08-17 21:15:53"
         },
         {
             "name": "j7mbo/twitter-api-php",
@@ -1095,52 +830,6 @@
                 "php"
             ],
             "time": "2015-12-04 15:28:43"
-        },
-        {
-            "name": "nticaric/twitter-streaming-api",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nticaric/twitter-streaming-api.git",
-                "reference": "db4cdf974bdaa16c7e46c35ca4ad3354c5337896"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nticaric/twitter-streaming-api/zipball/db4cdf974bdaa16c7e46c35ca4ad3354c5337896",
-                "reference": "db4cdf974bdaa16c7e46c35ca4ad3354c5337896",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": ">=4,<6",
-                "guzzlehttp/log-subscriber": "~1.0",
-                "guzzlehttp/oauth-subscriber": "0.1.*",
-                "guzzlehttp/retry-subscriber": "~1.0",
-                "nesbot/carbon": "~1.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Nticaric\\Twitter\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "The MIT License (MIT)"
-            ],
-            "authors": [
-                {
-                    "name": "Nenad Ticaric",
-                    "email": "nticaric@gmail.com"
-                }
-            ],
-            "description": "A PHP library for consuming Twitter’s Streaming API",
-            "homepage": "https://github.com/nticaric/twitter-streaming-api",
-            "time": "2015-11-11 15:03:11"
         },
         {
             "name": "paragonie/random_compat",
@@ -2290,6 +1979,271 @@
             "time": "2015-05-29 06:29:14"
         },
         {
+            "name": "guzzlehttp/guzzle",
+            "version": "4.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/66fd916e9f9130bc22c51450476823391cb2f67c",
+                "reference": "66fd916e9f9130bc22c51450476823391cb2f67c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/streams": "~2.1",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "~4.0",
+                "psr/log": "~1.0"
+            },
+            "suggest": {
+                "ext-curl": "Guzzle will use specific adapters if cURL is present"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2014-10-05 19:29:14"
+        },
+        {
+            "name": "guzzlehttp/log-subscriber",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/log-subscriber.git",
+                "reference": "99c3c0004165db721d8ef7bbef60c996210e538a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/log-subscriber/zipball/99c3c0004165db721d8ef7bbef60c996210e538a",
+                "reference": "99c3c0004165db721d8ef7bbef60c996210e538a",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~4.0 | ~5.0",
+                "php": ">=5.4.0",
+                "psr/log": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Subscriber\\Log\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Logs HTTP requests and responses as they are sent over the wire (Guzzle 4+)",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "Guzzle",
+                "log",
+                "plugin"
+            ],
+            "time": "2014-10-13 03:31:43"
+        },
+        {
+            "name": "guzzlehttp/oauth-subscriber",
+            "version": "0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/oauth-subscriber.git",
+                "reference": "f5e857b5ab34279611c171111c40000435299698"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/oauth-subscriber/zipball/f5e857b5ab34279611c171111c40000435299698",
+                "reference": "f5e857b5ab34279611c171111c40000435299698",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~4.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Subscriber\\Oauth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle OAuth 1.0 subscriber",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "Guzzle",
+                "oauth"
+            ],
+            "time": "2014-05-20 00:04:02"
+        },
+        {
+            "name": "guzzlehttp/retry-subscriber",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/retry-subscriber.git",
+                "reference": "fdee39aa27a462da184312aaafda35d5b191691d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/retry-subscriber/zipball/fdee39aa27a462da184312aaafda35d5b191691d",
+                "reference": "fdee39aa27a462da184312aaafda35d5b191691d",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~4.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "guzzlehttp/log-subscriber": "~1.0",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Subscriber\\Retry\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Retries failed HTTP requests using customizable retry strategies (Guzzle 4+)",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "Guzzle",
+                "http",
+                "retry"
+            ],
+            "time": "2014-08-04 17:45:25"
+        },
+        {
+            "name": "guzzlehttp/streams",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/streams.git",
+                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/streams/zipball/f91b721d73f0e561410903b3b3c90a5d0e40b534",
+                "reference": "f91b721d73f0e561410903b3b3c90a5d0e40b534",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Stream\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Provides a simple abstraction over streams of data (Guzzle 4+)",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "Guzzle",
+                "stream"
+            ],
+            "time": "2014-08-17 21:15:53"
+        },
+        {
             "name": "hamcrest/hamcrest-php",
             "version": "v1.2.2",
             "source": {
@@ -3409,7 +3363,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "nticaric/twitter-streaming-api": 20,
         "j7mbo/twitter-api-php": 20,
         "fennb/phirehose": 20
     },

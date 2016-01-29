@@ -7,7 +7,6 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "nticaric/twitter-streaming-api": "dev-master",
         "j7mbo/twitter-api-php": "dev-master",
         "fennb/phirehose": "dev-master"
     },
