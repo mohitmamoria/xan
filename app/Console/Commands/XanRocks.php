@@ -58,21 +58,4 @@ class XanRocks extends Command
 
         $stream->consume();
     }
-
-    protected function respondToTweet($tweet)
-    {
-        // $twitter = new TwitterAPIExchange(array(
-        //     'consumer_key'                 => static::$CONSUMER_KEY,
-        //     'consumer_secret'              => static::$CONSUMER_SECRET,
-        //     'oauth_access_token'           => static::$ACCESS_TOKEN,
-        //     'oauth_access_token_secret'    => static::$ACCESS_TOKEN_SECRET
-        // ));
-
-        // echo $twitter->buildOauth("https://api.twitter.com/1.1/statuses/update.json", "POST")
-        //                  ->setPostFields(array(
-        //                     'status' => '@' . $tweet['in_reply_to_screen_name'] . ' @' . $tweet['user']['screen_name'] . ' Hello. Xan here. Remind me after an hour · Remind me tomorrow.',
-        //                     'in_reply_to_status_id' => $tweet['id']
-        //                  ))
-        //                  ->performRequest();
-    }
 }
