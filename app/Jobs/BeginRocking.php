@@ -26,6 +26,34 @@ class BeginRocking extends Job
      */
     public function handle()
     {
+        if($this->isAReply()) {
+            $this->closeTheConversation();
+        } else if($this->isAStarter()) {
+            $this->beginConversation();
+        }
+    }
+
+    protected function isAStarter()
+    {
+        $hashtags = array_pluck($this->tweet['entities']['hashtags'], 'text');
+
+        return in_array(Xan::$STARTER_HASHTAG, $hashtags);
+    }
+
+    protected function isAReply()
+    {
+        $mentions = array_pluck($this->tweet['entities']['user_mentions'], 'screen_name');
+
+        return in_array(Xan::$XAN_HANDLE, $mentions);
+    }
+
+    protected function closeAConversation()
+    {
+        // close the conversation
+    }
+
+    protected function beginConversation()
+    {
         $twitter = new TwitterAPIExchange(array(
             'consumer_key'                 => config('xan.twitter.consumer_key'),
             'consumer_secret'              => config('xan.twitter.consumer_secret'),

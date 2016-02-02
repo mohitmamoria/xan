@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Nticaric\Twitter\TwitterStream;
 use TwitterAPIExchange;
-use App\Xan\TrackXanRocks;
+use App\Xan\StreamTwitter;
 use App\Xan\Trackable;
 use Phirehose;
 
@@ -42,7 +42,7 @@ class XanRocks extends Command
      */
     public function handle()
     {
-        $stream = new TrackXanRocks(
+        $stream = new StreamTwitter(
             config('xan.twitter.access_token'),
             config('xan.twitter.access_token_secret'),
             Phirehose::METHOD_FILTER

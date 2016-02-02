@@ -5,19 +5,24 @@ namespace App\Xan;
 use OauthPhirehose;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Jobs\BeginRocking;
+use App\Xan\Xan;
 
-class TrackXanRocks extends OauthPhirehose implements Trackable
+class StreamTwitter extends OauthPhirehose implements Trackable
 {
 	use DispatchesJobs;
 
 	public function enqueueStatus($status) {
-		$job = new BeginRocking(json_decode($status, true));
+		$tweet = json_decode($status, true);
+
+		print_r($tweet);
+
+		$job = new BeginRocking($tweet);
 
 		$this->dispatch($job);
 	}
 
 	public function getTrack()
 	{
-		return ['#XanRocks'];
+		return [Xan::getStarterHashtag(), Xan::getXanHandle()];
 	}
 }
