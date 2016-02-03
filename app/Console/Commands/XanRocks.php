@@ -43,13 +43,13 @@ class XanRocks extends Command
     public function handle()
     {
         $stream = new StreamTwitter(
-            config('xan.twitter.access_token'),
-            config('xan.twitter.access_token_secret'),
+            config('xan.twitter_stream.access_token'),
+            config('xan.twitter_stream.access_token_secret'),
             Phirehose::METHOD_FILTER
         );
 
-        $stream->consumerKey = config('xan.twitter.consumer_key');
-        $stream->consumerSecret = config('xan.twitter.consumer_secret');
+        $stream->consumerKey = config('xan.twitter_stream.consumer_key');
+        $stream->consumerSecret = config('xan.twitter_stream.consumer_secret');
 
         if($stream instanceof Trackable)
         {

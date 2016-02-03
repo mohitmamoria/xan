@@ -55,10 +55,10 @@ class BeginRocking extends Job
     protected function beginConversation()
     {
         $twitter = new TwitterAPIExchange(array(
-            'consumer_key'                 => config('xan.twitter.consumer_key'),
-            'consumer_secret'              => config('xan.twitter.consumer_secret'),
-            'oauth_access_token'           => config('xan.twitter.access_token'),
-            'oauth_access_token_secret'    => config('xan.twitter.access_token_secret')
+            'consumer_key'                 => config('xan.twitter_api.consumer_key'),
+            'consumer_secret'              => config('xan.twitter_api.consumer_secret'),
+            'oauth_access_token'           => config('xan.twitter_api.access_token'),
+            'oauth_access_token_secret'    => config('xan.twitter_api.access_token_secret')
         ));
 
         echo $twitter->buildOauth("https://api.twitter.com/1.1/statuses/update.json", "POST")
