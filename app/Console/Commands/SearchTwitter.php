@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use TwitterAPIExchange;
+use App\Twitter\Twitter;
 
 class SearchTwitter extends Command
 {
@@ -21,14 +21,18 @@ class SearchTwitter extends Command
      */
     protected $description = 'Searches Twitter for tweets.';
 
+    protected $twitter;
+
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Twitter $twitter)
     {
         parent::__construct();
+
+        $this->twitter = $twitter;
     }
 
     /**
@@ -38,21 +42,12 @@ class SearchTwitter extends Command
      */
     public function handle()
     {
-        $twitter = new TwitterAPIExchange(array(
-            'consumer_key'                 => config('xan.twitter_api.consumer_key'),
-            'consumer_secret'              => config('xan.twitter_api.consumer_secret'),
-            'oauth_access_token'           => config('xan.twitter_api.access_token'),
-            'oauth_access_token_secret'    => config('xan.twitter_api.access_token_secret')
-        ));
+        $tweets = $this->twitter->search($this->makeQueryString());
 
-        $tweet = json_decode($twitter->setGetField($this->makeGetField())
-                        ->buildOauth("https://api.twitter.com/1.1/search/tweets.json", "GET")
-                        ->performRequest(), true);
-
-        print_r($tweet);
+        print_r($tweets);
     }
 
-    protected function makeGetField()
+    protected function makeQueryString()
     {
         $sinceId = $this->option('since_id');
 

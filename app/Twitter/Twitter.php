@@ -30,6 +30,15 @@ class Twitter
         return json_decode($tweet, true);
 	}
 
+	public function search($queryString)
+	{
+		$tweets = $this->newExchange()->setGetField($queryString)
+			->buildOauth("https://api.twitter.com/1.1/search/tweets.json", "GET")
+			->performRequest();
+
+		return json_decode($tweets, true);
+	}
+
 	protected function newExchange()
 	{
 		return new TwitterAPIExchange(array(
