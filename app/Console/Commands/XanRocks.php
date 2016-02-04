@@ -16,7 +16,7 @@ class XanRocks extends Command
      *
      * @var string
      */
-    protected $signature = 'xan:rocks';
+    protected $signature = 'xan:rock';
 
     /**
      * The console command description.

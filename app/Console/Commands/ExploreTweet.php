@@ -12,7 +12,7 @@ class ExploreTweet extends Command
      *
      * @var string
      */
-    protected $signature = 'tweet:explore {tweet_id}';
+    protected $signature = 'xan:explore-tweet {tweet_id}';
 
     /**
      * The console command description.
