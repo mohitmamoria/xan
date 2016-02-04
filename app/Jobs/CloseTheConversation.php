@@ -26,6 +26,7 @@ class CloseTheConversation extends Job
     public function handle()
     {
         // 1. Find the Trigger Tweet's ID
+        
 
         // 2. Close the conversation
     }

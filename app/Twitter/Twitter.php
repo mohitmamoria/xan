@@ -44,7 +44,7 @@ class Twitter
 	public function postTweet($parameters)
 	{
 		$tweet = $this->newExchange()
-			->buildOauth(static::$BASE_URL'/statuses/update.json', 'POST')
+			->buildOauth(static::$BASE_URL.'/statuses/update.json', 'POST')
 			->setPostFields($parameters)
 			->performRequest();
 
