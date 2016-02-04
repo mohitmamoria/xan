@@ -51,11 +51,11 @@ class SearchTwitter extends Command
     {
         $sinceId = $this->option('since_id');
 
-        $query = sprintf('?q=%s&result=%s&count=%d', $this->makeSearchQuery(), 'recent', 100);
+        $query = '?q='.$this->makeSearchQuery().'&result=recent&count=100';
 
         if($sinceId)
         {
-            $query .= sprintf('&since_id=%d', $sinceId);
+            $query .= '&since_id='.$sinceId;
         }
 
         $this->info('Search Query: ' . $query);
@@ -71,7 +71,6 @@ class SearchTwitter extends Command
         return sprintf(
             'from:%s to:%s',
             $fromHandle,
-            $toHandle,
             $toHandle
         );
     }
