@@ -23,8 +23,9 @@ class Twitter
 
 	public function find($tweetId)
 	{
-		$tweet = $this->newExchange()->setGetField('?id='.$tweetId)
-            ->buildOauth(static::$BASE_URL.'/statuses/show.json', "GET")
+		$tweet = $this->newExchange()
+			->setGetField('?id='.$tweetId)
+            ->buildOauth(static::$BASE_URL.'/statuses/show.json', 'GET')
             ->performRequest();
 
         return json_decode($tweet, true);
@@ -32,11 +33,22 @@ class Twitter
 
 	public function search($queryString)
 	{
-		$tweets = $this->newExchange()->setGetField($queryString)
-			->buildOauth("https://api.twitter.com/1.1/search/tweets.json", "GET")
+		$tweets = $this->newExchange()
+			->setGetField($queryString)
+			->buildOauth(static::$BASE_URL.'/search/tweets.json', 'GET')
 			->performRequest();
 
 		return json_decode($tweets, true);
+	}
+
+	public function postTweet($parameters)
+	{
+		$tweet = $this->newExchange()
+			->buildOauth(static::$BASE_URL'/statuses/update.json', 'POST')
+			->setPostFields($parameters)
+			->performRequest();
+
+		return json_decode($tweet, true);
 	}
 
 	protected function newExchange()

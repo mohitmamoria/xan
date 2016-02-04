@@ -4,13 +4,13 @@ namespace App\Xan;
 
 class Xan
 {
-	public static $STARTER_HASHTAG = 'XanRocks';
+	public static $TRIGGER_HASHTAG = 'XanRocks';
 
 	public static $XAN_HANDLE = 'XanHere';
 
-	public static function getStarterHashtag()
+	public static function getTriggerHashtag()
 	{
-		return '#'.static::$STARTER_HASHTAG;
+		return '#'.static::$TRIGGER_HASHTAG;
 	}
 
 	public static function getXanHandle()

@@ -31,18 +31,16 @@ class ProcessTweet extends Job
     {
         if($this->isAReply()) {
             $this->dispatch(new CloseTheConversation($this->tweet));
-        } else if($this->isAStarter()) {
+        } else if($this->isATrigger()) {
             $this->dispatch(new BeginAConversation($this->tweet));
-        } else {
-            // ignore any other cases
         }
     }
 
-    protected function isAStarter()
+    protected function isATrigger()
     {
         $hashtags = array_pluck($this->tweet['entities']['hashtags'], 'text');
 
-        return in_array(Xan::$STARTER_HASHTAG, $hashtags);
+        return in_array(Xan::$TRIGGER_HASHTAG, $hashtags);
     }
 
     protected function isAReply()
