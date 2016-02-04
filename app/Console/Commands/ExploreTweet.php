@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use TwitterAPIExchange;
+use App\Twitter\Twitter;
 
 class ExploreTweet extends Command
 {
@@ -21,14 +21,18 @@ class ExploreTweet extends Command
      */
     protected $description = 'Explores a tweet.';
 
+    protected $twitter;
+
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Twitter $twitter)
     {
         parent::__construct();
+
+        $this->twitter = $twitter;
     }
 
     /**
@@ -40,16 +44,7 @@ class ExploreTweet extends Command
     {
         $tweetId = $this->argument('tweet_id');
 
-        $twitter = new TwitterAPIExchange(array(
-            'consumer_key'                 => config('xan.twitter_api.consumer_key'),
-            'consumer_secret'              => config('xan.twitter_api.consumer_secret'),
-            'oauth_access_token'           => config('xan.twitter_api.access_token'),
-            'oauth_access_token_secret'    => config('xan.twitter_api.access_token_secret')
-        ));
-
-        $tweet = json_decode($twitter->setGetField('?id='.$tweetId)
-                        ->buildOauth("https://api.twitter.com/1.1/statuses/show.json", "GET")
-                        ->performRequest(), true);
+        $tweet = $this->twitter->find($tweetId);
 
         print_r($tweet);
     }

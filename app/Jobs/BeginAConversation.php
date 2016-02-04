@@ -26,6 +26,11 @@ class BeginAConversation extends Job
      */
     public function handle()
     {
+        // $this->twitter->postTweet(array(
+        //     'status' => $this->makeTweet(),
+        //     'in_reply_to_status_id' => $this->tweet['id']
+        // ));
+
         $twitter = new TwitterAPIExchange(array(
             'consumer_key'                 => config('xan.twitter_api.consumer_key'),
             'consumer_secret'              => config('xan.twitter_api.consumer_secret'),
