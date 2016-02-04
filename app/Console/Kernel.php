@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         Commands\Inspire::class,
         Commands\XanRocks::class,
         Commands\ExploreTweet::class,
+        Commands\SearchTwitter::class,
     ];
 
     /**
