@@ -3,11 +3,14 @@
 namespace App\Jobs;
 
 use App\Jobs\Job;
+use App\Twitter\Twitter;
 use TwitterAPIExchange;
 
 class BeginAConversation extends Job
 {
     protected $tweet;
+
+    protected $twitter;
 
     /**
      * Create a new job instance.
@@ -16,6 +19,7 @@ class BeginAConversation extends Job
      */
     public function __construct($tweet)
     {
+        $this->twitter = app(Twitter::class);
         $this->tweet = $tweet;
     }
 

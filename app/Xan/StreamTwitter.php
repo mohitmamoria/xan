@@ -23,6 +23,6 @@ class StreamTwitter extends OauthPhirehose implements Trackable
 
 	public function getTrack()
 	{
-		return [Xan::getStarterHashtag(), Xan::getXanHandle()];
+		return [Xan::getTriggerHashtag(), Xan::getXanHandle()];
 	}
 }

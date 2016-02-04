@@ -3,8 +3,8 @@
 namespace App\Jobs;
 
 use App\Jobs\Job;
+use App\Xan\Xan;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use TwitterAPIExchange;
 
 class ProcessTweet extends Job
 {
