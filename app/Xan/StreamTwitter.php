@@ -4,7 +4,7 @@ namespace App\Xan;
 
 use OauthPhirehose;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use App\Jobs\BeginRocking;
+use App\Jobs\ProcessTweet;
 use App\Xan\Xan;
 
 class StreamTwitter extends OauthPhirehose implements Trackable
@@ -16,7 +16,7 @@ class StreamTwitter extends OauthPhirehose implements Trackable
 
 		print_r($tweet);
 
-		$job = new BeginRocking($tweet);
+		$job = new ProcessTweet($tweet);
 
 		$this->dispatch($job);
 	}
