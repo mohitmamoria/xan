@@ -20,12 +20,13 @@ class CreateConversationsTable extends Migration
             $table->integer('sniper_user_utc_offset');
             $table->string('target_user_id');
             $table->string('target_user_screen_name');
-            $table->integer('reminders_count')->default(0);
+            $table->tinyInteger('story_id');
+            $table->tinyInteger('last_chapter_id')->default(0); // by default set 0; incremented when sent first chapter
             $table->string('closing_tweet_id')->nullable();
             $table->nullableTimestamps();
             $table->timestamp('closed_at')->nullable();
-            $table->timestamp('first_reminder_at')->nullable();
-            $table->timestamp('last_reminder_at')->nullable();
+            $table->timestamp('first_chapter_at')->nullable();
+            $table->timestamp('last_chapter_at')->nullable();
         });
     }
 

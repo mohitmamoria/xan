@@ -13,7 +13,8 @@ class Conversation extends Model
     	'sniper_user_screen_name',
     	'sniper_user_utc_offset',
     	'target_user_id',
-    	'target_user_screen_name'
+    	'target_user_screen_name',
+        'story_id'
     ];
 
     protected $dates = [

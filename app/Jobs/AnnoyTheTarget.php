@@ -44,12 +44,12 @@ class AnnoyTheTarget extends Job
 
     private function updateConversation()
     {
-        $this->conversation->reminders_count++;
-        $this->conversation->last_reminder_at = Carbon::now();
-        if(is_null($this->conversation->first_reminder_at))
+        $this->conversation->last_chapter_id++;
+        $this->conversation->last_chapter_at = Carbon::now();
+        if(is_null($this->conversation->first_chapter_at))
         {
-            // if first reminder, set the timestamp equal to the last reminder's timestamp
-            $this->conversation->first_reminder_at = $this->conversation->last_reminder_at;
+            // if first chapter, set its timestamp equal to the last chapter's timestamp
+            $this->conversation->first_chapter_at = $this->conversation->last_chapter_at;
         }
         $this->conversation->save();
     }
