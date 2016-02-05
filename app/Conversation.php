@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Conversation extends Model
 {
@@ -23,4 +24,14 @@ class Conversation extends Model
     	'first_reminder_at',
     	'last_reminder_at'
     ];
+
+    public static function closeByTriggerTweetId($triggerTweetId, $closingTweetId)
+    {
+        return static::where('trigger_tweet_id', $triggerTweetId)
+            ->whereNull('closed_at')
+            ->update([
+                'closing_tweet_id' => $closingTweetId,
+                'closed_at' => Carbon::now()
+            ]);
+    }
 }
