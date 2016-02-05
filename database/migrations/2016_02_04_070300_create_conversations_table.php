@@ -21,6 +21,7 @@ class CreateConversationsTable extends Migration
             $table->string('target_user_id');
             $table->string('target_user_screen_name');
             $table->integer('reminders_count')->default(0);
+            $table->string('closing_tweet_id')->nullable();
             $table->nullableTimestamps();
             $table->timestamp('closed_at')->nullable();
             $table->timestamp('first_reminder_at')->nullable();
