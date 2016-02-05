@@ -15,4 +15,14 @@ class Story extends Model
     {
     	return $this->hasMany(Chapter::class);
     }
+
+    public static function random()
+    {
+    	return static::active()->orderByRaw('RAND()')->first();
+    }
+
+    public function scopeActive($query)
+    {
+    	return $query->whereNull('deactivated_at');
+    }
 }
