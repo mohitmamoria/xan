@@ -41,6 +41,6 @@ class CloseTheConversation extends Job
 
         // Close the conversation
         echo 'Closing conversation with Trigger Tweet ID: ' . $triggerTweetId;
-        // Conversation::closeByTriggerTweetId($triggerTweetId);
+        Conversation::closeByTriggerTweetId($triggerTweetId, $this->tweet['id']);
     }
 }
