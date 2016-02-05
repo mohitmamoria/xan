@@ -25,6 +25,11 @@ class Conversation extends Model
     	'last_reminder_at'
     ];
 
+    public static function findByTriggerTweetId($triggerTweetId)
+    {
+        return static::where('trigger_tweet_id', $triggerTweetId)->get();
+    }
+
     public static function closeByTriggerTweetId($triggerTweetId, $closingTweetId)
     {
         return static::where('trigger_tweet_id', $triggerTweetId)
