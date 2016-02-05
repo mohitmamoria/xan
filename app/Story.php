@@ -16,6 +16,13 @@ class Story extends Model
     	return $this->hasMany(Chapter::class);
     }
 
+    public function nextChapter($currentChapter)
+    {
+    	return $this->chapters()
+    		->where('sequence', $currentChapter + 1)
+    		->first();
+    }
+
     public static function random()
     {
     	return static::active()->orderByRaw('RAND()')->first();

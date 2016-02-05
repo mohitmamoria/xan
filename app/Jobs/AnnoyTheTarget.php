@@ -20,11 +20,17 @@ class AnnoyTheTarget extends Job
      *
      * @return void
      */
-    public function __construct($conversation, $tweet)
+    public function __construct($conversation, $tweet = null)
     {
         $this->twitter = app(Twitter::class);
-        $this->tweet = $tweet;
+
         $this->conversation = $conversation;
+        
+        if(is_null($tweet)) {
+            $this->tweet = $this->twitter->find($conversation->trigger_tweet_id);
+        } else {
+            $this->tweet = $tweet;
+        }
     }
 
     /**
@@ -34,32 +40,50 @@ class AnnoyTheTarget extends Job
      */
     public function handle()
     {
+        $nextChapter = $this->conversation->story->nextChapter($this->conversation->last_chapter_sequence);
+
+        if(is_null($nextChapter)) {
+            $this->giveUp();
+        } else {
+            $this->annoy($nextChapter);
+        }
+    }
+
+    private function giveUp()
+    {
         $tweet = $this->twitter->postTweet(array(
-            'status' => $this->makeTweet(),
+            'status' => $this->makeGiveUpTweet(),
             'in_reply_to_status_id' => $this->tweet['id']
         ));
 
-        $this->updateConversation();
+        $this->conversation->giveUp();
     }
 
-    private function updateConversation()
+    private function annoy($annoyingChapter)
     {
-        $this->conversation->last_chapter_id++;
-        $this->conversation->last_chapter_at = Carbon::now();
-        if(is_null($this->conversation->first_chapter_at))
-        {
-            // if first chapter, set its timestamp equal to the last chapter's timestamp
-            $this->conversation->first_chapter_at = $this->conversation->last_chapter_at;
-        }
-        $this->conversation->save();
+        $tweet = $this->twitter->postTweet(array(
+            'status' => $this->makeTweet($annoyingChapter),
+            'in_reply_to_status_id' => $this->tweet['id']
+        ));
+
+        $this->conversation->justAnnoyed($annoyingChapter);
+    }
+
+    private function makeGiveUpTweet()
+    {
+        return str_replace(
+            [':target', ':sniper'],
+            ['@'.$this->tweet['in_reply_to_screen_name'], '@'.$this->tweet['user']['screen_name']],
+            ':target I GIVE UP ON YOU. You are beyond pathetic when even a ROBOT gives up on you. Just saying. (Sorry :sniper, I tried.)'
+        );   
     }
 
     private function makeTweet()
     {
-        return sprintf(
-            '@%s Hello. I am Xan - @%s\'s annoying bot that will bug you until you respond to this tweet. 🔔 ;)',
-            $this->tweet['in_reply_to_screen_name'],
-            $this->tweet['user']['screen_name']
+        return str_replace(
+            [':target', ':sniper'],
+            ['@'.$this->tweet['in_reply_to_screen_name'], '@'.$this->tweet['user']['screen_name']],
+            $chapterToTweet->body
         );
     }
 }

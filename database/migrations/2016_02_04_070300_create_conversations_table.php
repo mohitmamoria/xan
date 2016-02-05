@@ -21,9 +21,10 @@ class CreateConversationsTable extends Migration
             $table->string('target_user_id');
             $table->string('target_user_screen_name');
             $table->tinyInteger('story_id');
-            $table->tinyInteger('last_chapter_id')->default(0); // by default set 0; incremented when sent first chapter
+            $table->tinyInteger('last_chapter_sequence')->default(0); // by default set 0; incremented when sent first chapter
             $table->string('closing_tweet_id')->nullable();
             $table->nullableTimestamps();
+            $table->timestamp('gave_up_at')->nullable();
             $table->timestamp('closed_at')->nullable();
             $table->timestamp('first_chapter_at')->nullable();
             $table->timestamp('last_chapter_at')->nullable();
