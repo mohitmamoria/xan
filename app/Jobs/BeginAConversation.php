@@ -3,11 +3,14 @@
 namespace App\Jobs;
 
 use App\Jobs\Job;
+use App\Conversation;
 use App\Twitter\Twitter;
-use TwitterAPIExchange;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class BeginAConversation extends Job
 {
+    use DispatchesJobs;
+
     protected $tweet;
 
     protected $twitter;
@@ -30,18 +33,18 @@ class BeginAConversation extends Job
      */
     public function handle()
     {
-        $tweet = $this->twitter->postTweet(array(
-            'status' => $this->makeTweet(),
-            'in_reply_to_status_id' => $this->tweet['id']
-        ));
-    }
+        // Someone triggered the conversation without mentioning the target user
+        if(is_null($this->tweet['in_reply_to_user_id'])) return;
 
-    private function makeTweet()
-    {
-        return sprintf(
-            '@%s Hello. I am Xan - @%s\'s annoying bot that will bug you until you respond to this tweet. 🔔 ;)',
-            $this->tweet['in_reply_to_screen_name'],
-            $this->tweet['user']['screen_name']
-        );
+        $conversation = Conversation::create([
+            'trigger_tweet_id' => $this->tweet['id_str'],
+            'sniper_user_id' => $this->tweet['user']['id_str'],
+            'sniper_user_screen_name' => $this->tweet['user']['screen_name'],
+            'sniper_user_utc_offset' => $this->tweet['user']['utc_offset'],
+            'target_user_id' => $this->tweet['in_reply_to_user_id_str'],
+            'target_user_screen_name' => $this->tweet['in_reply_to_screen_name']
+        ]);
+
+        $this->dispatch(new AnnoyTheTarget($conversation, $this->tweet));
     }
 }
