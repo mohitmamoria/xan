@@ -22,9 +22,10 @@ class Conversation extends Model
     	'created_at',
     	'updated_at',
     	'deleted_at',
+        'gave_up_at',
     	'closed_at',
-    	'first_reminder_at',
-    	'last_reminder_at'
+    	'first_chapter_at',
+    	'last_chapter_at'
     ];
 
     public function story()
@@ -56,6 +57,16 @@ class Conversation extends Model
         return static::closeByTriggerTweetId($this->trigger_tweet_id, $closingTweetId);
     }
 
+    public function isItTimeToSendNextChapter()
+    {
+        // if no chapter has been sent yet, it is time ALREADY to annoy
+        // NOTE: also, because we later perform divison, it is better to
+        // handle the case with 0 here itself.
+        if($this->last_chapter_sequence == 0) return true;
+        
+        return $this->last_chapter_at->diffInHours() >= $this->timeGapForNextChapter();
+    }
+
     public function giveUp()
     {
         $this->gave_up_at = Carbon::now();
@@ -78,5 +89,30 @@ class Conversation extends Model
         }
 
         $this->save();
+    }
+
+    private function timeGapForNextChapter()
+    {
+        // example timegaps by the formula used
+        // SEQUENCE --> TIME GAP (in hours)
+        //    1     --> 24
+        //    2     --> 12
+        //    3     --> 8
+        //    4     --> 6
+        //    5     --> 4
+        //    6     --> 3
+        //    7     --> 3
+        //    8     --> 3
+        //    9     --> 2
+        //    10    --> 2
+        //    11    --> 2
+        //    12    --> 2
+        //    13    --> 1
+        $gap = (int) floor(24/$this->last_chapter_sequence)
+
+        // do not annoy more than once in an hour
+        if($gap < 1) $gap = 1;
+
+        return $gap;
     }
 }

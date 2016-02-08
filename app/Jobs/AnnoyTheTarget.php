@@ -34,6 +34,9 @@ class AnnoyTheTarget extends Job
      */
     public function handle()
     {
+        // is it the RIGHT TIME to annoy the target?
+        if( ! $this->conversation->isItTimeToSendNextChapter()) return;
+        
         $nextChapter = $this->conversation->story->nextChapter($this->conversation->last_chapter_sequence);
 
         if(is_null($nextChapter)) {
@@ -69,7 +72,7 @@ class AnnoyTheTarget extends Job
             [':target', ':sniper'],
             ['@'.$this->conversation->target_user_screen_name, '@'.$this->conversation->sniper_user_screen_name],
             ':target I GIVE UP ON YOU. You are beyond pathetic when even a ROBOT gives up on you. Just saying. (Sorry :sniper, I tried.)'
-        );   
+        );
     }
 
     private function makeTweet($chapterToTweet)
