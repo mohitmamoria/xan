@@ -77,19 +77,19 @@ class AnnoyTheTarget extends Job
 
     private function makeTweet($chapterToTweet)
     {
-        return $this->addEmojis(str_replace(
+        return str_replace(
             [':target', ':sniper'],
             ['@'.$this->conversation->target_user_screen_name, '@'.$this->conversation->sniper_user_screen_name],
             $chapterToTweet->body
-        ));
+        );
     }
 
     private function addEmojis($tweet)
     {
-        return str_replace(
-            [':emoji_bell', ':emoji_angel', ':emoji_army', ':emoji_cross', ':emoji_heart_eye', ':emoji_angry', ':emoji_dragon', ':emoji_heart', ':emoji_robot', ':emoji_broken_heart'],
-            [🔔, 👼, 💂, ❌, 😍, 😤, 🐲, 💖, 👾, 💔],
-            $tweet
-        );
+        // return str_replace(
+        //     [':emoji_bell', ':emoji_angel', ':emoji_army', ':emoji_cross', ':emoji_heart_eye', ':emoji_angry', ':emoji_dragon', ':emoji_heart', ':emoji_robot', ':emoji_broken_heart'],
+        //     [🔔, 👼, 💂, ❌, 😍, 😤, 🐲, 💖, 👾, 💔],
+        //     $tweet
+        // );
     }
 }
