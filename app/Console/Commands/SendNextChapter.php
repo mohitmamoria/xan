@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Conversation;
 use App\Twitter\Twitter;
+use App\Jobs\AnnoyTheTarget;
 
 class SendNextChapter extends Command
 {
@@ -79,7 +80,11 @@ class SendNextChapter extends Command
         }
 
         // no closing tweet found in this set, fetch next set of tweets
-        return $this->findClosingTweet($conversation, $tweet['id_str']);
+        // NOTE: passing maxTweetId as 1 less than the minimum ID that
+        // that we got in the current set. Otherwise, it will keep returning
+        // results containing the one tweet represented by this ID and the
+        // base condition i.e. count($result['statuses']) == 0 will never be TRUE.
+        return $this->findClosingTweet($conversation, $tweet['id'] - 1);
     }
 
     protected function makeQueryString(Conversation $conversation, $maxTweetId = null)

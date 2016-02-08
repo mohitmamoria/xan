@@ -67,16 +67,16 @@ class AnnoyTheTarget extends Job
     {
         return str_replace(
             [':target', ':sniper'],
-            ['@'.$this->conversation->target_user_screen_name, '@'.$this->conversation->sniper_user_screen_name,
+            ['@'.$this->conversation->target_user_screen_name, '@'.$this->conversation->sniper_user_screen_name],
             ':target I GIVE UP ON YOU. You are beyond pathetic when even a ROBOT gives up on you. Just saying. (Sorry :sniper, I tried.)'
         );   
     }
 
-    private function makeTweet()
+    private function makeTweet($chapterToTweet)
     {
         return str_replace(
             [':target', ':sniper'],
-            ['@'.$this->conversation->target_user_screen_name, '@'.$this->conversation->sniper_user_screen_name,
+            ['@'.$this->conversation->target_user_screen_name, '@'.$this->conversation->sniper_user_screen_name],
             $chapterToTweet->body
         );
     }

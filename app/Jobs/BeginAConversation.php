@@ -44,7 +44,7 @@ class BeginAConversation extends Job
             'sniper_user_utc_offset' => $this->tweet['user']['utc_offset'],
             'target_user_id' => $this->tweet['in_reply_to_user_id_str'],
             'target_user_screen_name' => $this->tweet['in_reply_to_screen_name'],
-            'story_id' => Story::random()->id;
+            'story_id' => Story::random()->id
         ]);
 
         $this->dispatch(new AnnoyTheTarget($conversation));
