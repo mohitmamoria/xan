@@ -47,6 +47,6 @@ class BeginAConversation extends Job
             'story_id' => Story::random()->id;
         ]);
 
-        $this->dispatch(new AnnoyTheTarget($conversation, $this->tweet));
+        $this->dispatch(new AnnoyTheTarget($conversation));
     }
 }

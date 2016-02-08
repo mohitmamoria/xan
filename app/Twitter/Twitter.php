@@ -3,6 +3,7 @@
 namespace App\Twitter;
 
 use TwitterAPIExchange;
+use App\Conversation;
 
 class Twitter
 {

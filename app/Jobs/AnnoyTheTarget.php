@@ -20,17 +20,11 @@ class AnnoyTheTarget extends Job
      *
      * @return void
      */
-    public function __construct($conversation, $tweet = null)
+    public function __construct($conversation)
     {
         $this->twitter = app(Twitter::class);
 
         $this->conversation = $conversation;
-        
-        if(is_null($tweet)) {
-            $this->tweet = $this->twitter->find($conversation->trigger_tweet_id);
-        } else {
-            $this->tweet = $tweet;
-        }
     }
 
     /**
@@ -53,7 +47,7 @@ class AnnoyTheTarget extends Job
     {
         $tweet = $this->twitter->postTweet(array(
             'status' => $this->makeGiveUpTweet(),
-            'in_reply_to_status_id' => $this->tweet['id']
+            'in_reply_to_status_id' => $this->conversation->trigger_tweet_id
         ));
 
         $this->conversation->giveUp();
@@ -63,7 +57,7 @@ class AnnoyTheTarget extends Job
     {
         $tweet = $this->twitter->postTweet(array(
             'status' => $this->makeTweet($annoyingChapter),
-            'in_reply_to_status_id' => $this->tweet['id']
+            'in_reply_to_status_id' => $this->conversation->trigger_tweet_id
         ));
 
         $this->conversation->justAnnoyed($annoyingChapter);
@@ -73,7 +67,7 @@ class AnnoyTheTarget extends Job
     {
         return str_replace(
             [':target', ':sniper'],
-            ['@'.$this->tweet['in_reply_to_screen_name'], '@'.$this->tweet['user']['screen_name']],
+            ['@'.$this->conversation->target_user_screen_name, '@'.$this->conversation->sniper_user_screen_name,
             ':target I GIVE UP ON YOU. You are beyond pathetic when even a ROBOT gives up on you. Just saying. (Sorry :sniper, I tried.)'
         );   
     }
@@ -82,7 +76,7 @@ class AnnoyTheTarget extends Job
     {
         return str_replace(
             [':target', ':sniper'],
-            ['@'.$this->tweet['in_reply_to_screen_name'], '@'.$this->tweet['user']['screen_name']],
+            ['@'.$this->conversation->target_user_screen_name, '@'.$this->conversation->sniper_user_screen_name,
             $chapterToTweet->body
         );
     }

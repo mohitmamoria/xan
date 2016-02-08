@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         Commands\XanRocks::class,
         Commands\ExploreTweet::class,
         Commands\SearchTwitter::class,
+        Commands\SendNextChapter::class,
     ];
 
     /**

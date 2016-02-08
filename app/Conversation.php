@@ -39,12 +39,21 @@ class Conversation extends Model
 
     public static function closeByTriggerTweetId($triggerTweetId, $closingTweetId)
     {
-        return static::where('trigger_tweet_id', $triggerTweetId)
-            ->whereNull('closed_at')
+        return static::open()->where('trigger_tweet_id', $triggerTweetId)
             ->update([
                 'closing_tweet_id' => $closingTweetId,
                 'closed_at' => Carbon::now()
             ]);
+    }
+
+    public function scopeOpen($query)
+    {
+        return $query->whereNull('closed_at');
+    }
+
+    public function close($closingTweetId)
+    {
+        return static::closeByTriggerTweetId($this->trigger_tweet_id, $closingTweetId);
     }
 
     public function giveUp()
