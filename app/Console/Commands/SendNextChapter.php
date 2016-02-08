@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Carbon\Carbon;
 use App\Conversation;
 use App\Twitter\Twitter;
 use App\Jobs\AnnoyTheTarget;
@@ -46,16 +47,24 @@ class SendNextChapter extends Command
      */
     public function handle()
     {
+        $this->info('Beginning at: ' . Carbon::now() . PHP_EOL);
+
         $conversations = Conversation::open()->get();
+
+        $this->info('Total open conversations: ' . $conversations->count() . PHP_EOL);
 
         foreach($conversations as $conversation)
         {
+            $this->info('Working for conversation with ID: ' . $conversation->id . PHP_EOL);
+
             $closingTweet = $this->findClosingTweet($conversation);
 
             if(is_null($closingTweet))
             {
+                $this->info('Annoying conversation with ID: ' . $conversation->id . PHP_EOL);
                 $this->dispatch(new AnnoyTheTarget($conversation));
             } else {
+                $this->info('Closing conversation with ID: ' . $conversation->id . PHP_EOL);
                 $conversation->close($closingTweet['id']);
             }
         }
