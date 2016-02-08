@@ -108,7 +108,7 @@ class Conversation extends Model
         //    11    --> 2
         //    12    --> 2
         //    13    --> 1
-        $gap = (int) floor(24/$this->last_chapter_sequence)
+        $gap = (int) floor(24/$this->last_chapter_sequence);
 
         // do not annoy more than once in an hour
         if($gap < 1) $gap = 1;
