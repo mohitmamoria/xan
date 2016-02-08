@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         Commands\ExploreTweet::class,
         Commands\SearchTwitter::class,
         Commands\SendNextChapter::class,
+        Commands\SeedStories::class,
     ];
 
     /**

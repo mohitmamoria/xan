@@ -9,6 +9,8 @@ class Story extends Model
 {
     protected $fillable = ['name'];
 
+    public $timestamps = false;
+
     protected $dates = ['deactivated_at'];
 
     public function chapters()
