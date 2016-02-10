@@ -38,11 +38,14 @@ class Conversation extends Model
         return static::where('trigger_tweet_id', $triggerTweetId)->get();
     }
 
-    public static function closeByTriggerTweetId($triggerTweetId, $closingTweetId)
+    public static function closeByTriggerTweetId($triggerTweetId, $closingTweet)
     {
-        return static::open()->where('trigger_tweet_id', $triggerTweetId)
+        return static::open()
+            ->where('trigger_tweet_id', $triggerTweetId)
+            // only target's tweet can close a conversation
+            ->where('target_user_id', $closingTweet['user']['id'])
             ->update([
-                'closing_tweet_id' => $closingTweetId,
+                'closing_tweet_id' => $closingTweet['id'],
                 'closed_at' => Carbon::now()
             ]);
     }
@@ -52,9 +55,9 @@ class Conversation extends Model
         return $query->whereNull('closed_at');
     }
 
-    public function close($closingTweetId)
+    public function close($closingTweet)
     {
-        return static::closeByTriggerTweetId($this->trigger_tweet_id, $closingTweetId);
+        return static::closeByTriggerTweetId($this->trigger_tweet_id, $closingTweet);
     }
 
     public function isItTimeToSendNextChapter()

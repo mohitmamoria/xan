@@ -65,7 +65,7 @@ class SendNextChapter extends Command
                 $this->dispatch(new AnnoyTheTarget($conversation));
             } else {
                 $this->info('Closing conversation with ID: ' . $conversation->id . PHP_EOL);
-                $conversation->close($closingTweet['id']);
+                $conversation->close($closingTweet);
             }
         }
     }
